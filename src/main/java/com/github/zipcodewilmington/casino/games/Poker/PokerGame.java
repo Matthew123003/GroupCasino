@@ -1,27 +1,66 @@
 package com.github.zipcodewilmington.casino.games.Poker;
 
-public class PokerGame {
+import com.github.zipcodewilmington.casino.games.CardClasses.Cards;
+import com.github.zipcodewilmington.casino.games.CardClasses.Deck;
+import com.github.zipcodewilmington.casino.games.CardClasses.Hand;
+
+import java.util.ArrayList;
+import java.util.Comparator;
+
+public class PokerGame extends Cards {
 
     public static void main(String[] args){}
 
     // Initialize deck
     // Shuffle the deck
     Deck deck = new Deck();
-    deck.shuffle();
+    deck.shuffleDeck();
 
     // Deal a card from the deck
-    Hand dealerHand = new Hand();
-    Hand playerHand = new Hand();
-        for (int i = 0; i < 5; i++) {
-        dealerHand.addCard(deck.dealCard());
-        playerHand.addCard(deck.dealCard());
-    }
+    ArrayList<Hand> dealerHand = new ArrayList<>();
+    ArrayList<Hand> playerHand = new ArrayList<>();
+
     // Evaluate hands
     public String evaluateHand(){
             if (isRoyalFlush()) return PokerHands.ROYAL_FLUSH.getPokerHandName();
             if (isStraightFlush()) return PokerHands.STRAIGHT_FLUSH.getPokerHandName();
             if (isFourOfAKind ()) return PokerHands.FOUR_OF_A_KIND.getPokerHandName();
-            if (is)
+            if (isFullHouse()) return PokerHands.FULL_HOUSE.getPokerHandName();
+            if (isFlush()) return PokerHands.FLUSH.getPokerHandName();
+            if (isStraight()) return PokerHands.STRAIGHT.getPokerHandName();
+            if (isThreeOfAKind()) return PokerHands.THREE_OF_A_KIND.getPokerHandName();
+            if (isTwoPair()) return PokerHands.TWO_PAIR.getPokerHandName();
+            if ((isOnePair())) return PokerHands.ONE_PAIR.getPokerHandName();
+            return PokerHands.HIGH_CARD.getPokerHandName();
+    }
+
+    private boolean isThreeOfAKind() {
+        playerHand.contains()
+
+    }
+
+    private boolean isOnePair() {
+    }
+
+    private boolean isTwoPair() {
+    }
+
+    private boolean isStraight() {
+    }
+
+    private boolean isFlush() {
+    }
+
+    private boolean isFullHouse() {
+    }
+
+    private boolean isFourOfAKind() {
+    }
+
+    private boolean isStraightFlush() {
+    }
+
+    private boolean isRoyalFlush() {
     }
 
     public enum PokerHands{
@@ -43,14 +82,14 @@ public class PokerGame {
             return pokerHandName;
         }
     }
-    // Implement hand evaluation logic
 
-    // Determine winner
-    // Implement winner determination logic
-
-    // Output winner
-    // Output hand rankings
 public void announceGame(){
-            System.out.println("Welcome to Poker FIVE-DRAW PLAY!\n --> Bid it's fixed at $10\n" );
+            System.out.println("Welcome to Poker FIVE-DRAW PLAY!"+
+                    "-->Bid for this game it's fixed at $10\n" +
+                    "-->You will get 5 cards.\n" +
+                    "-->You can choose to keep them or switch them." +
+                    "-->Bet against dealer if you think you have the highest poker hand.\n"+
+                    "Let"+"'s" +" play!"
+            );
 }
 }
