@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington.casino.games.CardClasses;
 public class Cards {
+
     public enum CardValue {
         TWO(2),
         THREE(3),
@@ -15,7 +16,7 @@ public class Cards {
         KING(13),
         ACE(14);
 
-        private int CardValue;
+
 
         private CardValue (int value) {
             this.CardValue = value;
