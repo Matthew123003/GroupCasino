@@ -1,14 +1,20 @@
 package com.github.zipcodewilmington.GameTests.PokerTests;
 
 import com.github.zipcodewilmington.casino.GameInterface;
+import com.github.zipcodewilmington.casino.PlayerInterface;
+import com.github.zipcodewilmington.casino.games.CardClasses.Dealer;
 import com.github.zipcodewilmington.casino.games.Poker.PokerGame;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
+ArrayList<PlayerInterface> pokerPLayers;
+Dealer dealer;
 public class PokerTest {
+    PokerGame pokerGame = new PokerGame();
     @Test
     public void printRulesTest(){
-        PokerGame pokerGame = new PokerGame();
         String expected = "Place rules here";
 
         String actual = GameInterface.printRules();
@@ -16,14 +22,17 @@ public class PokerTest {
         Assert.assertEquals(expected,actual);
 
     }
-
-    public void addPlayerTest(){
-        boolean expected = true;
-
-        boolean actual =
+    @Test
+    public void addPlayerTest(PlayerInterface player) {
+        pokerPLayers.add(player);
     }
-//    + boolean add(PlayerInterface player) return boolean
-//+ boolean remove(PlayerInterface player) return boolean
-//+ void run()
-//+ boolean gameOver() returns boolean;
+    @Test
+    public void removePlayerTest(PlayerInterface player){
+    pokerPLayers.remove(player);
+   }
+   @Test
+    public void run(){}
+    @Test
+    public void gameOver(){}
+
 }
