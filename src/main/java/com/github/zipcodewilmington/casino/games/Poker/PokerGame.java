@@ -11,13 +11,13 @@ import java.util.List;
 
 public class PokerGame extends Cards {
     //Cards.CardValue card value = deck.pop().getCardValue();
-    public static void main(String[] args){}
+    public static void main(String[] args) {
+    }
 
     // Initialize deck
     // Shuffle the deck
     Deck deck = new Deck();
-   // deck.shuffleDeck();
-
+    // deck.shuffleDeck();
 
     // Deal a card from the deck
     ArrayList<Cards.Card> dealerHand = new ArrayList<>();
@@ -25,40 +25,73 @@ public class PokerGame extends Cards {
     ArrayList<Cards.Suit> playerHandSuit = new ArrayList<>();
     ArrayList<Cards.Suit> dealerHandSuit = new ArrayList<>();
 
-
-
     // Evaluate hands
-    public String evaluateHand(){
-            if (isRoyalFlush())
-                return PokerHands.ROYAL_FLUSH.getPokerHandName();
-            if (isStraightFlush())
-                return PokerHands.STRAIGHT_FLUSH.getPokerHandName();
-            if (isFourOfAKind ())
-                return PokerHands.FOUR_OF_A_KIND.getPokerHandName();
-            if (isFullHouse())
-                return PokerHands.FULL_HOUSE.getPokerHandName();
-            if (isFlush())
-                return PokerHands.FLUSH.getPokerHandName();
-            if (isStraight())
-                return PokerHands.STRAIGHT.getPokerHandName();
-            if (isThreeOfAKind())
-                return PokerHands.THREE_OF_A_KIND.getPokerHandName();
-            if (isTwoPair())
-                return PokerHands.TWO_PAIR.getPokerHandName();
-            if ((isOnePair()))
-                return PokerHands.ONE_PAIR.getPokerHandName();
-            return PokerHands.HIGH_CARD.getPokerHandName();
+    public String evaluateHand(ArrayList<Card> hand) {
+        if (isRoyalFlush(hand))
+            return PokerHands.ROYAL_FLUSH.getPokerHandName();
+        if (isStraightFlush(hand))
+            return PokerHands.STRAIGHT_FLUSH.getPokerHandName();
+        if (isFourOfAKind(hand))
+            return PokerHands.FOUR_OF_A_KIND.getPokerHandName();
+        if (isFullHouse(hand))
+            return PokerHands.FULL_HOUSE.getPokerHandName();
+        if (isFlush(hand))
+            return PokerHands.FLUSH.getPokerHandName();
+        if (isStraight(hand))
+            return PokerHands.STRAIGHT.getPokerHandName();
+        if (isThreeOfAKind(hand))
+            return PokerHands.THREE_OF_A_KIND.getPokerHandName();
+        if (isTwoPair(hand))
+            return PokerHands.TWO_PAIR.getPokerHandName();
+        if ((isOnePair(hand)))
+            return PokerHands.ONE_PAIR.getPokerHandName();
+        return PokerHands.HIGH_CARD.getPokerHandName();
     }
-
-    private boolean isThreeOfAKind() {
+    private boolean isStraight(ArrayList<Card> hand) {
         return true;
     }
+    private boolean isThreeOfAKind(ArrayList<Card> hand) {
+        Card firstCard = hand.get(0);
+        Card secondCard = hand.get(1);
+        Card thirdCard = hand.get(2);
+        int cardCount1 = 0;
+        int cardCount2 = 0;
+        int cardCount3 = 0;
 
+        if (firstCard == secondCard){
+            cardCount1++;
+            cardCount2++;
+        }
+
+        if (secondCard == thirdCard){
+            cardCount2++;
+            cardCount3++;
+        }
+
+        if (firstCard == thirdCard){
+            cardCount1++;
+            cardCount3++;
+        }
+
+        for (int i = 3; i < hand.size(); i++) {
+            if(hand.get(i).getCardValue() == firstCard.getCardValue()){
+                cardCount1++;
+                if(cardCount == 2);
+                return true;
+            }
+        }
+        return false;
+    }
+    private boolean isFullHouse(ArrayList<Card> hand) {
+        return true;
+    }
+    private boolean isStraightFlush(ArrayList<Card> hand) {return true;}
+    private boolean isRoyalFlush(ArrayList<Card> hand) {  return true;
+    }
     private boolean isOnePair(ArrayList<Card> hand) {
-
-        for(int i = 0; i < hand.size() -1; i++){
-            for(int j = i + 1; i < hand.size(); j++){
-                if(hand.get(i).getCardValue() == hand.get(j).getCardValue()){
+        for (int i = 0; i < hand.size() - 1; i++) {
+            for (int j = i + 1; j < hand.size(); j++) {
+                if (hand.get(i).getCardValue() == hand.get(j).getCardValue()) {
                     return true;
                 }
             }
@@ -66,41 +99,57 @@ public class PokerGame extends Cards {
         return false;
     }
 
-//    private boolean isTwoPair() {
-//        Hand hand = new Hand();
-//        int pairCount = 0;
-//        for(int i = 0; i < playerHand.size() -1; i++){
-//            for(int j = i + 1; i < playerHand.size(); j++){
-//                if(hand.get(i).getCardValue() == playerHand.get(j).getCardValue()) || (playerHand.get(i).getSuit() == playerHand.get(j).getSuit());
-//                {
-//                    pairCount ++;
-//                }
-//            }
-//        }
-//        return pairCount >= 2;
-//    }
+    private boolean isTwoPair(ArrayList<Card> hand) {
+        int pairCount = 0;
+        for (int i = 0; i < hand.size() - 1; i++) {
+            for (int j = i + 1; j < hand.size(); j++) {
+                if (hand.get(i).getCardValue() == hand.get(j).getCardValue()) {
+                    pairCount++;
+                }
+            }
+        }
+        return pairCount == 2;
+    }
 
-    private boolean isStraight() {
+    private boolean isFlush(ArrayList<Card> hand) {
+        Card firstCard = hand.get(0);
+        Suit suit = firstCard.getSuit();
+
+        for (int i = 1; i < hand.size(); i++) {
+            Card nextCard = hand.get(i);
+            Suit cardSuit = nextCard.getSuit();
+            if (cardSuit != suit)
+                return false;
+        }
         return true;
     }
 
-    private boolean isFlush() {
-        return true;
+    private boolean isFourOfAKind(ArrayList<Card> hand) {
+        Card firstCard = hand.get(0);
+        Card secondCard = hand.get(1);
+        int firstCardCount = 0;
+        int secondCardCount = 0;
+
+        if(firstCard == secondCard){
+            firstCardCount++;
+            secondCardCount++;
+        }
+
+        for (int i = 2; i < hand.size(); i++) {
+            if(hand.get(i).getCardValue() == firstCard.getCardValue()) {
+                firstCardCount++;
+                if (firstCardCount == 3)
+                    return true;
+            }
+            if(hand.get(i).getCardValue() == secondCard.getCardValue()) {
+                secondCardCount++;
+                if (secondCardCount == 3)
+                    return true;
+            }
+        }
+        return false;
     }
 
-    private boolean isFullHouse() {
-        return true;
-    }
-
-    private boolean isFourOfAKind() {
-        return true;
-    }
-
-    private boolean isStraightFlush() {  return true;
-    }
-
-    private boolean isRoyalFlush() {  return true;
-    }
 
     public enum PokerHands{
         HIGH_CARD("High Card"),
