@@ -1,6 +1,6 @@
 package com.github.zipcodewilmington.casino.games.CardClasses;
 public class Cards {
-
+    private int = CardValue;
     public enum CardValue {
         TWO(2),
         THREE(3),

@@ -29,15 +29,24 @@ public class PokerGame extends Cards {
 
     // Evaluate hands
     public String evaluateHand(){
-            if (isRoyalFlush()) return PokerHands.ROYAL_FLUSH.getPokerHandName();
-            if (isStraightFlush()) return PokerHands.STRAIGHT_FLUSH.getPokerHandName();
-            if (isFourOfAKind ()) return PokerHands.FOUR_OF_A_KIND.getPokerHandName();
-            if (isFullHouse()) return PokerHands.FULL_HOUSE.getPokerHandName();
-            if (isFlush()) return PokerHands.FLUSH.getPokerHandName();
-            if (isStraight()) return PokerHands.STRAIGHT.getPokerHandName();
-            if (isThreeOfAKind()) return PokerHands.THREE_OF_A_KIND.getPokerHandName();
-//            if (isTwoPair()) return PokerHands.TWO_PAIR.getPokerHandName();
-//            if ((isOnePair())) return PokerHands.ONE_PAIR.getPokerHandName();
+            if (isRoyalFlush())
+                return PokerHands.ROYAL_FLUSH.getPokerHandName();
+            if (isStraightFlush())
+                return PokerHands.STRAIGHT_FLUSH.getPokerHandName();
+            if (isFourOfAKind ())
+                return PokerHands.FOUR_OF_A_KIND.getPokerHandName();
+            if (isFullHouse())
+                return PokerHands.FULL_HOUSE.getPokerHandName();
+            if (isFlush())
+                return PokerHands.FLUSH.getPokerHandName();
+            if (isStraight())
+                return PokerHands.STRAIGHT.getPokerHandName();
+            if (isThreeOfAKind())
+                return PokerHands.THREE_OF_A_KIND.getPokerHandName();
+            if (isTwoPair())
+                return PokerHands.TWO_PAIR.getPokerHandName();
+            if ((isOnePair()))
+                return PokerHands.ONE_PAIR.getPokerHandName();
             return PokerHands.HIGH_CARD.getPokerHandName();
     }
 
@@ -46,6 +55,7 @@ public class PokerGame extends Cards {
     }
 
     private boolean isOnePair(ArrayList<Card> hand) {
+
         for(int i = 0; i < hand.size() -1; i++){
             for(int j = i + 1; i < hand.size(); j++){
                 if(hand.get(i).getCardValue() == hand.get(j).getCardValue()){
