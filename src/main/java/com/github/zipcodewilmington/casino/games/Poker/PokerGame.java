@@ -48,7 +48,98 @@ public class PokerGame extends Cards {
         return PokerHands.HIGH_CARD.getPokerHandName();
     }
     private boolean isStraight(ArrayList<Card> hand) {
+
         return true;
+    }
+
+    private boolean isFullHouse(ArrayList<Card> hand) {
+        Card firstCard = hand.get(0);
+        Card secondCard = hand.get(1);
+        Card thirdCard = hand.get(2);
+        Card fourthCard = hand.get(3);
+        Card fifthCard = hand.get(4);
+        int c1 = 0;
+        int c2 = 0;
+        int c3 = 0;
+
+        if (firstCard == secondCard) {
+            c1++;
+            c2++;
+        }
+
+        if (secondCard == thirdCard) {
+            c2++;
+            c3++;
+        }
+
+        if (firstCard == thirdCard) {
+            c1++;
+            c3++;
+        }
+
+        for (int i = 3; i < hand.size(); i++) {
+            if (hand.get(i).getCardValue() == firstCard.getCardValue()) {
+                c1++;
+            }
+            if (hand.get(i).getCardValue() == secondCard.getCardValue()) {
+                c2++;
+            }
+            if (hand.get(i).getCardValue() == thirdCard.getCardValue()) {
+                c3++;
+            }
+        }if(c1 + c2 + c3 == 5){
+            return true;
+        }else if(c1 + c2 + c3 == 4) {
+            return true;
+        }else if(c1 + c2 + c3 == 6 && fourthCard.getCardValue() == fifthCard.getCardValue()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    private boolean isStraightFlush(ArrayList<Card> hand) {
+
+        return true;}
+
+
+    private boolean isRoyalFlush(ArrayList<Card> hand) {
+        Card firstCardValue = hand.get(0);
+        Suit firstCardSuit = firstCardValue.getSuit();
+        int sameSuitCards = 0;
+        Card secondCard = hand.get(1);
+        Card thirdCard = hand.get(2);
+        Card fourCard = hand.get(3);
+        Card fifthCard = hand.get(4);
+        CardValue c1 = CardValue.ACE;
+        CardValue c2 = CardValue.KING;
+        CardValue c3 = CardValue.QUEEN;
+        CardValue c4 = CardValue.JACK;
+        CardValue c5 = CardValue.TEN;
+
+
+        for (int i = 0; i < hand.size(); i++){
+            if (hand.get(i).getCardValue() == c1 || c2 || c3 || c4 || c5)
+        }
+
+        for (int i = 0; i < hand.size(); i++) {
+            if(hand.get(i).getSuit() == firstCardSuit) {
+                sameSuitCards++;
+                if(sameSuitCards == 4 && hand.contains(c1))
+                    return true;
+            }
+        }
+        return false;
+    }
+    private boolean isOnePair(ArrayList<Card> hand) {
+        for (int i = 0; i < hand.size() - 1; i++) {
+            for (int j = i + 1; j < hand.size(); j++) {
+                if (hand.get(i).getCardValue() == hand.get(j).getCardValue()) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
     private boolean isThreeOfAKind(ArrayList<Card> hand) {
         Card firstCard = hand.get(0);
@@ -76,29 +167,25 @@ public class PokerGame extends Cards {
         for (int i = 3; i < hand.size(); i++) {
             if(hand.get(i).getCardValue() == firstCard.getCardValue()){
                 cardCount1++;
-                if(cardCount == 2);
-                return true;
+                if(cardCount1 == 2) {
+                    return true;
+                }
             }
-        }
-        return false;
-    }
-    private boolean isFullHouse(ArrayList<Card> hand) {
-        return true;
-    }
-    private boolean isStraightFlush(ArrayList<Card> hand) {return true;}
-    private boolean isRoyalFlush(ArrayList<Card> hand) {  return true;
-    }
-    private boolean isOnePair(ArrayList<Card> hand) {
-        for (int i = 0; i < hand.size() - 1; i++) {
-            for (int j = i + 1; j < hand.size(); j++) {
-                if (hand.get(i).getCardValue() == hand.get(j).getCardValue()) {
+            if(hand.get(i).getCardValue() == secondCard.getCardValue()){
+                cardCount2++;
+                if(cardCount2 == 2) {
+                    return true;
+                }
+            }
+            if(hand.get(i).getCardValue() == thirdCard.getCardValue()) {
+                cardCount3++;
+                if (cardCount3 == 2){
                     return true;
                 }
             }
         }
         return false;
     }
-
     private boolean isTwoPair(ArrayList<Card> hand) {
         int pairCount = 0;
         for (int i = 0; i < hand.size() - 1; i++) {
