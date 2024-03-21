@@ -33,8 +33,8 @@ public class CrapsPlayer implements PlayerInterface {
     }
 
     @Override
-    public <SomeReturnType> SomeReturnType play() {
-
-        return null;
+    public String play() {
+        craps.run();
+        return "Thank you for playing.";
     }
 }
