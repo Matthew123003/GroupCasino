@@ -1,15 +1,15 @@
 package com.github.zipcodewilmington.GameTests.CardClassesTest;
 
-import com.github.zipcodewilmington.casino.games.CardClasses.Cards;
+import com.github.zipcodewilmington.casino.games.CardClasses.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 public class CardTests {
-    Cards.Card card;
+    Card card;
     @Before
     public void setUp(){
-        card = new Cards.Card(Cards.CardValue.SEVEN, Cards.Suit.CLUBS);
+        card = new Card(Cards.CardValue.SEVEN, Cards.Suit.CLUBS);
     }
     @Test
     public void testGetCardValue(){
