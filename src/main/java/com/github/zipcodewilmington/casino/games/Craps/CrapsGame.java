@@ -41,7 +41,7 @@ public class CrapsGame extends Dice implements GameInterface {
     public double chooseAmountToWager(double accBalance) {
         try {
             IOConsole io = new IOConsole();
-            int bet = io.getIntegerInput("How much would you like to wager?");
+            double bet = io.getDoubleInput("How much would you like to wager?");
             this.bet = bet;
             accBalance = accBalance - bet;
             if (bet > accBalance) {
