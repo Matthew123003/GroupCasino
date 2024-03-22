@@ -3,10 +3,7 @@ package com.github.zipcodewilmington.casino.games.Poker;
 import com.github.zipcodewilmington.casino.games.CardClasses.*;
 
 public class PokerGame extends Cards {
-    public static void main(String[] args) {
-        announceGame();
 
-    }
     public String evaluateHand(Hand hand) {
         if (isRoyalFlush(hand))
             return PokerHands.ROYAL_FLUSH.getPokerHandName();
@@ -244,13 +241,13 @@ public class PokerGame extends Cards {
             return pokerHandName;
         }
     }
-    public static void announceGame() {
+    public void printRules() {
         System.out.println("♠ ♣ ♦ ♥ Welcome to Poker FIVE-DRAW PLAY! ♦ ♥ ♠ ♣" +
                 "-->Bid for this game it's fixed at $10\n" +
                 "-->You will get 5 cards.\n" +
                 "-->You can choose to keep them or switch them." +
                 "-->Bet against dealer if you think you have the highest poker hand.\n" +
-                "Let" + "'s" + " play!"
+                "$$ Let" + "'s" + " play $$$!"
         );
     }
 }
