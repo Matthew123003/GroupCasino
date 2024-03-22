@@ -21,7 +21,22 @@ public class RouletteGame extends IOConsole implements GameInterface {
     }
     @Override
     public void run() {
+<<<<<<< HEAD
+        while(true) {
+            System.out.println("Lets Play!\n Where do you think the ball will land?\n  ");
+            playerGuess = io.getIntegerInput("Pick a number between 0 and 36.");
+            if(playerGuess == randomNumberResult){
+                System.out.println("Are you psychic??! Way to go! You win!");
+            } else if (playerGuess != randomNumberResult) {
+                System.out.println("Sorry that's not correct, would you like to try again?");
+            }else {
+
+            }
+        }
+
+=======
         runGame();
+>>>>>>> abf77ce99555cb994d1de83df96ef4c92ff190cc
     }
 
 

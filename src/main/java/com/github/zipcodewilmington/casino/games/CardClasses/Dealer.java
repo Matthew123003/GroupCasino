@@ -1,5 +1,8 @@
 package com.github.zipcodewilmington.casino.games.CardClasses;
 
+
+import java.util.ArrayList;
+
 import java.util.Arrays;
 
 public class Dealer {
@@ -13,15 +16,15 @@ public class Dealer {
         this.hand = new Hand();
     }
 
-    public Cards.Card[] deal(int numCards){
-        Cards.Card[] cards = new Cards.Card[numCards];
+    public Card[] deal(int numCards){
+        Card[] cards = new Card[numCards];
         for(int i = 0; i < numCards; i++){
             cards[i] = deck.pop();
         }
         return cards;
     }
 
-    public void addToHand(Cards.Card... cards) {
+    public void addToHand(Card... cards) {
         this.hand.addAll(Arrays.asList(cards));
     }
 
@@ -33,7 +36,7 @@ public class Dealer {
         String output = "Dealer's Hand: ";
 
         int index = 1;
-        for(Cards.Card card : hand){
+        for(Card card : hand){
             if(index != hand.size()) {
                 output += card.getCardValue() + " of " + card.getSuit() + ", ";
             }
@@ -92,3 +95,4 @@ public class Dealer {
     }
 
 }
+

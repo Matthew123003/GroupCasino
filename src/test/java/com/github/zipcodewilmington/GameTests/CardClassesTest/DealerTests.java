@@ -1,7 +1,6 @@
 package com.github.zipcodewilmington.GameTests.CardClassesTest;
 
 import com.github.zipcodewilmington.casino.games.CardClasses.Cards;
-import com.github.zipcodewilmington.casino.games.CardClasses.Dealer;
 import com.github.zipcodewilmington.casino.games.CardClasses.Deck;
 import org.junit.Assert;
 import org.junit.Before;

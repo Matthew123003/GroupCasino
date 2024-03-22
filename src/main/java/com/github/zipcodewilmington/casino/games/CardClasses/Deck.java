@@ -1,6 +1,6 @@
 package com.github.zipcodewilmington.casino.games.CardClasses;
 
-import com.github.zipcodewilmington.casino.games.CardClasses.Cards.Card;
+import com.github.zipcodewilmington.casino.games.CardClasses.Card;
 
 import java.util.Collections;
 import java.util.Stack;

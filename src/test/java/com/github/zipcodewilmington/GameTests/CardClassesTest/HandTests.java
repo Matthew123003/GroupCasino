@@ -1,5 +1,6 @@
 package com.github.zipcodewilmington.GameTests.CardClassesTest;
 
+import com.github.zipcodewilmington.casino.games.CardClasses.Card;
 import com.github.zipcodewilmington.casino.games.CardClasses.Cards;
 import com.github.zipcodewilmington.casino.games.CardClasses.Hand;
 import org.junit.Assert;
@@ -18,7 +19,7 @@ public class HandTests {
 
     @Test
     public void testAdd(){
-        Cards.Card card = new Cards.Card(Cards.CardValue.ACE, Cards.Suit.CLUBS);
+        Card card = new Card(Cards.CardValue.ACE, Cards.Suit.CLUBS);
 
         hand.add(card);
 
@@ -32,23 +33,23 @@ public class HandTests {
 
     @Test
     public void testGet(){
-        Cards.Card card = new Cards.Card(Cards.CardValue.ACE, Cards.Suit.CLUBS);
-        Cards.Card expected = new Cards.Card(Cards.CardValue.QUEEN, Cards.Suit.CLUBS);
+        Card card = new Card(Cards.CardValue.ACE, Cards.Suit.CLUBS);
+        Card expected = new Card(Cards.CardValue.QUEEN, Cards.Suit.CLUBS);
 
         hand.add(card);
         hand.add(expected);
 
-        Cards.Card actual = hand.get(1);
+        Card actual = hand.get(1);
 
         Assert.assertEquals(actual, expected);
     }
 
     @Test
     public void testConstructorWithParam(){
-        Cards.Card card = new Cards.Card(Cards.CardValue.ACE, Cards.Suit.CLUBS);
-        Cards.Card card2 = new Cards.Card(Cards.CardValue.QUEEN, Cards.Suit.CLUBS);
-        Cards.Card card3 = new Cards.Card(Cards.CardValue.JACK, Cards.Suit.CLUBS);
-        Cards.Card card4 = new Cards.Card(Cards.CardValue.TEN, Cards.Suit.CLUBS);
+        Card card = new Card(Cards.CardValue.ACE, Cards.Suit.CLUBS);
+        Card card2 = new Card(Cards.CardValue.QUEEN, Cards.Suit.CLUBS);
+        Card card3 = new Card(Cards.CardValue.JACK, Cards.Suit.CLUBS);
+        Card card4 = new Card(Cards.CardValue.TEN, Cards.Suit.CLUBS);
 
         Hand testHand = new Hand(card, card2, card3, card4);
 
@@ -60,10 +61,10 @@ public class HandTests {
 
     @Test
     public void testsContainsCardVal(){
-        Cards.Card card = new Cards.Card(Cards.CardValue.ACE, Cards.Suit.CLUBS);
-        Cards.Card card2 = new Cards.Card(Cards.CardValue.QUEEN, Cards.Suit.CLUBS);
-        Cards.Card card3 = new Cards.Card(Cards.CardValue.JACK, Cards.Suit.CLUBS);
-        Cards.Card card4 = new Cards.Card(Cards.CardValue.TEN, Cards.Suit.CLUBS);
+        Card card = new Card(Cards.CardValue.ACE, Cards.Suit.CLUBS);
+        Card card2 = new Card(Cards.CardValue.QUEEN, Cards.Suit.CLUBS);
+        Card card3 = new Card(Cards.CardValue.JACK, Cards.Suit.CLUBS);
+        Card card4 = new Card(Cards.CardValue.TEN, Cards.Suit.CLUBS);
 
         Hand testHand = new Hand(card, card2, card3, card4);
         boolean actual = testHand.checkIfContainsValue(Cards.CardValue.ACE);
@@ -72,9 +73,9 @@ public class HandTests {
 
     @Test
     public void testsContainsCardVal1(){
-        Cards.Card card2 = new Cards.Card(Cards.CardValue.QUEEN, Cards.Suit.CLUBS);
-        Cards.Card card3 = new Cards.Card(Cards.CardValue.JACK, Cards.Suit.CLUBS);
-        Cards.Card card4 = new Cards.Card(Cards.CardValue.TEN, Cards.Suit.CLUBS);
+        Card card2 = new Card(Cards.CardValue.QUEEN, Cards.Suit.CLUBS);
+        Card card3 = new Card(Cards.CardValue.JACK, Cards.Suit.CLUBS);
+        Card card4 = new Card(Cards.CardValue.TEN, Cards.Suit.CLUBS);
 
         Hand testHand = new Hand(card2, card3, card4);
         boolean actual = testHand.checkIfContainsValue(Cards.CardValue.ACE);
