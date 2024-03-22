@@ -15,4 +15,5 @@ public class RouletteTest {
 
         Assert.assertEquals(expectedRules, actualRules);
     }
+
 }

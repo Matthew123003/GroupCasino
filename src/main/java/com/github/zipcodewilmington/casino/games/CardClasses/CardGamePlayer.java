@@ -32,7 +32,7 @@ public class CardGamePlayer implements PlayerInterface {
         return 0;
     }
 
-    public Stack<Cards.Card> drawCards(int numToDraw){
+    public Stack<Card> drawCards(int numToDraw){
 
         return new Stack<>();
     }

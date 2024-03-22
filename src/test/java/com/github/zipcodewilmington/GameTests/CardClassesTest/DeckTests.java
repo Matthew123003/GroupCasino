@@ -1,7 +1,6 @@
 package com.github.zipcodewilmington.GameTests.CardClassesTest;
 
-import com.github.zipcodewilmington.casino.games.CardClasses.Cards;
-import com.github.zipcodewilmington.casino.games.CardClasses.Deck;
+import com.github.zipcodewilmington.casino.games.CardClasses.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,16 +19,15 @@ public class DeckTests {
     @Test
     public void testInheritance(){
 
-        Cards.Card card = new Cards.Card(Cards.CardValue.TWO, Cards.Suit.CLUBS);
-        System.out.print(card.getCardValue());
         Assert.assertTrue(deck instanceof Stack);
     }
 
     @Test
     public void testPop(){
-        Cards.Card expected = deck.peek();
+        Card expected = deck.peek();
 
-        Cards.Card actual = deck.pop();
+        Card actual = deck.pop();
+        Cards.CardValue x = deck.pop().getCardValue();
 
         Assert.assertEquals(expected, actual);
     }
@@ -43,13 +41,12 @@ public class DeckTests {
 
         Collections.shuffle(deck);
         for(int i = 0; i < deck.size(); i++){
-            Cards.Card original  = tempDeck.pop();
-            Cards.Card shuffled = deck.pop();
+            Card original  = tempDeck.pop();
+            Card shuffled = deck.pop();
             if(original != shuffled){
                 isEqual = false;
             }
         }
-
         Assert.assertFalse(isEqual);
     }
 
